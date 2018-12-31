@@ -10,7 +10,7 @@ phases:
 
     post_build:
         commands:
-            - aws s3 sync / "s3://${BUCKET_NAME}/${BUCKET_PATH}" --delete --sse AES256            
+            - aws s3 sync . "s3://${BUCKET_NAME}/${BUCKET_PATH}" --delete --sse AES256 --exclue "*" --include "cfn-*.yaml" --include "*.md"
             
 artifacts:
     files:
